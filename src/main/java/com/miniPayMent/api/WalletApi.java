@@ -1,8 +1,8 @@
 package com.miniPayMent.api;
 
 
-import com.miniPayMent.model.CreateWalletDto;
-import com.miniPayMent.model.ErrorResponse;
+import com.miniPayMent.model.request.CreateWalletDto;
+import com.miniPayMent.model.response.ErrorResponse;
 import com.miniPayMent.repository.entity.WalletEntity;
 import com.miniPayMent.service.impl.WalletServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

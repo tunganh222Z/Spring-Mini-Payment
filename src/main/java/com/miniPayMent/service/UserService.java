@@ -1,7 +1,7 @@
 package com.miniPayMent.service;
 
-import com.miniPayMent.model.CreateUserDto;
-import com.miniPayMent.model.UserDto;
+import com.miniPayMent.model.request.CreateUserDto;
+import com.miniPayMent.model.response.UserDto;
 
 import java.util.List;
 

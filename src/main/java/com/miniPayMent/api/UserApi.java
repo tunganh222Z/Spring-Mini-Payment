@@ -1,10 +1,9 @@
 package com.miniPayMent.api;
 
-import com.miniPayMent.model.CreateUserDto;
-import com.miniPayMent.model.ErrorResponse;
-import com.miniPayMent.model.UserDto;
+import com.miniPayMent.model.request.CreateUserDto;
+import com.miniPayMent.model.response.ErrorResponse;
+import com.miniPayMent.model.response.UserDto;
 import com.miniPayMent.service.UserService;
-import com.miniPayMent.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

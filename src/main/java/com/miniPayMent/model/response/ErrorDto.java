@@ -1,4 +1,4 @@
-package com.miniPayMent.model;
+package com.miniPayMent.model.response;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,5 @@
 package com.miniPayMent.repository;
 
-import com.miniPayMent.model.CreateUserDto;
-import com.miniPayMent.model.UserDto;
 import com.miniPayMent.repository.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

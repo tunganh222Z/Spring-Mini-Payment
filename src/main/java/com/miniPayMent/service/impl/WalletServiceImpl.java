@@ -1,7 +1,7 @@
 package com.miniPayMent.service.impl;
 
-import com.miniPayMent.model.CreateWalletDto;
-import com.miniPayMent.model.UserDto;
+import com.miniPayMent.model.request.CreateWalletDto;
+import com.miniPayMent.model.response.UserDto;
 import com.miniPayMent.repository.WalletRepository;
 import com.miniPayMent.repository.entity.WalletEntity;
 import com.miniPayMent.service.WalletService;

@@ -1,16 +1,14 @@
 package com.miniPayMent.service.impl;
 
-import com.config.ModelMapperConfig;
 import com.miniPayMent.custom_exception.UserException;
-import com.miniPayMent.model.CreateUserDto;
-import com.miniPayMent.model.UserDto;
+import com.miniPayMent.model.request.CreateUserDto;
+import com.miniPayMent.model.response.UserDto;
 import com.miniPayMent.repository.UserRepository;
 import com.miniPayMent.repository.entity.UserEntity;
 import com.miniPayMent.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
