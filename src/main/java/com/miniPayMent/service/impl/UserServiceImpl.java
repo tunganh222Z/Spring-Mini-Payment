@@ -1,11 +1,16 @@
 package com.miniPayMent.service.impl;
 
+import com.config.ModelMapperConfig;
+import com.miniPayMent.custom_exception.UserException;
 import com.miniPayMent.model.CreateUserDto;
 import com.miniPayMent.model.UserDto;
 import com.miniPayMent.repository.UserRepository;
 import com.miniPayMent.repository.entity.UserEntity;
 import com.miniPayMent.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,27 +21,26 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public UserDto getUser(String name, String personalId) {
-        UserDto userDto = new UserDto();
-
         UserEntity userEntity = userRepository.findByNameAndPersonalId(name, personalId);
-        userDto.setName(userEntity.getName());
-        userDto.setAge(userEntity.getAge());
-        userDto.setAddress(userEntity.getAddress());
-        userDto.setPersonalId(userEntity.getPersonalId());
-        userDto.setStatus(userEntity.getStatus());
+        if (userEntity == null) {
+            throw new UserException(
+                    "User not found",
+                    HttpStatus.BAD_REQUEST,
+                    400
+            );
+        }
+        UserDto userDto = modelMapper.map(userEntity, UserDto.class);
         return userDto;
     }
 
     @Override
     public void createUser(CreateUserDto request) {
-        UserEntity newUser = new UserEntity();
-
-        newUser.setName(request.getName());
-        newUser.setAddress(request.getAddress());
-        newUser.setAge(request.getAge());
-        newUser.setPersonalId(request.getPersonalId());
+        UserEntity newUser = modelMapper.map(request, UserEntity.class);
         newUser.setStatus("ACTIVE");
         newUser.setCreateAt(new java.util.Date());
 
@@ -49,11 +53,7 @@ public class UserServiceImpl implements UserService {
         List<UserDto> userDtoList = new ArrayList<>();
 
         for (UserEntity user : userEntityList) {
-            UserDto userDto = new UserDto();
-            userDto.setPersonalId(user.getPersonalId());
-            userDto.setName(user.getName());
-            userDto.setAge(user.getAge());
-            userDto.setStatus(user.getStatus());
+            UserDto userDto = modelMapper.map(user, UserDto.class);
             userDtoList.add(userDto);
         }
         return userDtoList;
